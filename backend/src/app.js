@@ -18,7 +18,14 @@ const fileUpload = require('express-fileupload');
 // create our Express app
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+// Apply CORS middleware globally
+app.use(cors(corsOptions));
 
 app.use(cookieParser());
 app.use(express.json());
